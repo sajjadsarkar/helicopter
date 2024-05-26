@@ -12,7 +12,16 @@ public class End : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Win.SetActive(true);
-        Time.timeScale = 0;
+
+        if(GameManager.Instance.totalCoin < GameManager.Instance.howMuchCoinToCollect)
+        {
+            GameManager.Instance.GameOver();
+        }
+        if (GameManager.Instance.totalCoin == GameManager.Instance.howMuchCoinToCollect)
+        
+            {
+            Win.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
